@@ -2,6 +2,7 @@
   "name": "vitessce-demo-gh-pages",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://keller-mark.github.io/vitessce-demo-gh-pages/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
