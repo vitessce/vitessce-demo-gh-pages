@@ -1,70 +1,80 @@
 export const myViewConfig = {
-  version: "1.0.4",
-  name: "My example config",
-  description: "This demonstrates the JSON schema",
+  version: "1.0.17",
+  name: "Habib et al., 2017 Nature Methods",
+  description: "Archived frozen adult human post-mortem brain tissue profiled by snRNA-seq (DroNc-seq)",
   datasets: [
     {
-      uid: "D1",
-      name: "Dries",
+      uid: "habib-2017",
+      name: "Habib 2017",
       files: [
         {
-          url: "https://s3.amazonaws.com/vitessce-data/0.0.31/master_release/dries/dries.cells.json",
-          type: "cells",
-          fileType: "cells.json"
+          fileType: "anndata.zarr",
+          url: "https://storage.googleapis.com/vitessce-demo-data/habib-2017/habib17.processed.h5ad.zarr",
+          coordinationValues: {
+            embeddingType: "UMAP",
+          },
+          options: {
+            obsFeatureMatrix: {
+              path: "X",
+              initialFeatureFilterPath: "var/top_highly_variable",
+            },
+            obsEmbedding: {
+              path: "obsm/X_umap",
+            },
+            obsSets: [
+              {
+                name: "Cell Type",
+                path: "obs/CellType",
+              },
+            ],
+          },
         },
-        {
-          url: "https://s3.amazonaws.com/vitessce-data/0.0.31/master_release/dries/dries.cell-sets.json",
-          type: "cell-sets",
-          fileType: "cell-sets.json"
-        }
-      ]
-    }
+      ],
+    },
   ],
+  initStrategy: "auto",
   coordinationSpace: {
-    dataset: {
-      A: "D1"
-    },
     embeddingType: {
-      A: "UMAP",
-      B: "t-SNE"
+      UMAP: "UMAP",
     },
-    embeddingZoom: {
-      A: 2.5
-    }
+    featureValueColormapRange: {
+      A: [0, 0.35],
+    },
   },
   layout: [
     {
-      component: "scatterplot",
-      coordinationScopes: {
-        dataset: "A",
-        embeddingType: "A",
-        embeddingZoom: "A"
-      },
-      x: 6, y: 0, w: 6, h: 6
+      component: "obsSets",
+      h: 4, w: 4, x: 4, y: 0,
+    },
+    {
+      component: "obsSetSizes",
+      h: 4, w: 4, x: 8, y: 0,
     },
     {
       component: "scatterplot",
+      h: 4, w: 4, x: 0, y: 0,
       coordinationScopes: {
-        dataset: "A",
-        embeddingType: "B",
-        embeddingZoom: "A"
+        embeddingType: "UMAP",
+        featureValueColormapRange: "A",
       },
-      x: 0, y: 0, w: 6, h: 6
     },
     {
-      component: "cellSets",
+      component: "heatmap",
+      h: 4, w: 8, x: 0, y: 4,
       coordinationScopes: {
-        dataset: "A"
+        featureValueColormapRange: "A",
       },
-      x: 0, y: 6, w: 6, h: 6
+      props: {
+        transpose: true,
+      },
     },
     {
-      component: "cellSetSizes",
-      coordinationScopes: {
-        dataset: "A"
-      },
-      x: 6, y: 6, w: 6, h: 6
-    }
+      component: "featureList",
+      h: 4, w: 2, x: 8, y: 4,
+    },
+    {
+      component: "description",
+      h: 4, w: 2, x: 10, y: 4,
+    },
   ],
-  initStrategy: "auto"
 };
