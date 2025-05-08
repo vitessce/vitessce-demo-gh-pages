@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+## React App Setup with Vite and Vitessce
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository demonstrates how to set up a basic [Vitessce](https://vitessce.io/) application using [Vite](https://vite.dev/guide/) and React.
 
-## Available Scripts
+### Prerequisites
 
-In the project directory, you can run:
+- **Node.js**: Ensure you have Node.js installed. Vitessce has been tested with Node.js versions 16 and 18. ([vitessce.io](https://vitessce.io/docs/js-overview/?utm_source=chatgpt.com))
 
-### `npm start`
+### 📦 Project Initialization
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. ** This project was created as a Vite React Template project with the following command **:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+   ```bash
+   npm create vite@latest vitessce-demo-gh-pages -- --template react
+   ```
 
-### `npm test`
+2. **Navigate to the project directory**:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   ```bash
+   cd vitessce-demo-gh-pages
+   ```
 
-### `npm run build`
+3. **Install dependencies**:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ```bash
+   npm install
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. **Install specific React versions compatible with Vitessce**:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```bash
+   npm install react@18.0.0 react-dom@18.0.0
+   ```
 
-### `npm run eject`
+   Vitessce is compatible with React version 18.0.0. ([vitessce.io](https://vitessce.io/docs/js-overview/?utm_source=chatgpt.com))
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+5. **Install Vitessce**:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```bash
+   npm install vitessce
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 🚀 Running the Development Server
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Start the development server with:
 
-## Learn More
+```bash
+npm run dev
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This will start the Vite development server, typically accessible at `http://localhost:5173/`.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 🧩 Integrating Vitessce into Your React App
 
-### Code Splitting
+To embed Vitessce into your React application:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. **Import the Vitessce component**:
 
-### Analyzing the Bundle Size
+   ```javascript
+   import { Vitessce } from 'vitessce';
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+2. **Provide a view configuration**:
 
-### Making a Progressive Web App
+   Create a JSON object that defines the layout and data sources for Vitessce. Refer to the [Vitessce documentation](https://vitessce.io/docs/js-react-vitessce/) for details on crafting view configurations.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+3. **Render the Vitessce component**:
 
-### Advanced Configuration
+   ```jsx
+   <Vitessce
+     config={yourViewConfig}
+     height={800}
+     theme="light"
+   />
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+   Replace `yourViewConfig` with your actual configuration object.
 
-### Deployment
+### 📄 Notes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- **React Version**: Ensure you're using React version 18.0.0 for compatibility with Vitessce.
 
-### `npm run build` fails to minify
+- **Vite Version**: At the time of writing, the latest version of Vite is `6.3.5`. Ensure your project uses a compatible version.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Vitessce Documentation**: For more detailed information on integrating and configuring Vitessce, visit the [official documentation](https://vitessce.io/docs/).
+
