@@ -2,7 +2,7 @@
   "name": "vitessce-demo-gh-pages",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://keller-mark.github.io/vitessce-demo-gh-pages/",
+  "homepage": "https://vitessce.github.io/vitessce-demo-gh-pages/",
   "type": "module",
   "scripts": {
     "dev": "vite",
